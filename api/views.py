@@ -26,7 +26,7 @@ class CarFleetDetailFilter(generics.ListAPIView):
     queryset = Car.objects.all()
     serializer_class = CarSerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['=location']  #exact match search
+    search_fields = ['=brand']  #exact match search
     # ['^slug'] starts-with search functionality
     # ['@']  full text search works best with postgresql
     # ['$']  regex search
