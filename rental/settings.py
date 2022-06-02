@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'api',
     'cloudinary',
     'corsheaders',
+    'rest_framework_swagger',
+
 
 ]
 
