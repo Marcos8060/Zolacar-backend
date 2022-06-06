@@ -38,18 +38,18 @@ class CustomAccountManager(BaseUserManager):
 
 class NewUser(AbstractBaseUser,PermissionsMixin):
     email = models.EmailField(_('email adress'),unique=True)
-    user_name = models.CharField(max_length=120,unique=True)
+    username = models.CharField(max_length=120,unique=True)
     first_name = models.CharField(max_length=120,blank=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
 
     objects = CustomAccountManager()
 
-    USERNAME_FIELD = 'user_name'
+    USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['first_name','email']
 
     def __str__(self):
-        return self.user_name
+        return self.username
 
 
 class Car(models.Model):
