@@ -2,8 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,PermissionsMixin,BaseUserManager
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.models import User
-
+from django.conf import settings
 
 
 # Create your models here.
@@ -51,7 +50,7 @@ class NewUser(AbstractBaseUser,PermissionsMixin):
 
     def __str__(self):
         return self.user_name
-        
+
 
 class Car(models.Model):
     image = models.ImageField(upload_to='images/')
