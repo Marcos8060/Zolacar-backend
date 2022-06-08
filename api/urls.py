@@ -11,7 +11,6 @@ urlpatterns = [
     path('featured/',FeaturedList.as_view()),
     path('featured/<int:pk>/',FeatureDetail.as_view()),
     path('cars/search/',CarFleetDetailFilter.as_view()),
-    path('profile/',Profile),
     path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 

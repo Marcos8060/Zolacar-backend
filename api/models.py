@@ -93,9 +93,3 @@ class Featured(models.Model):
     interior1 = models.ImageField(upload_to='images/')
     interior2 = models.ImageField(upload_to='images/')
     interior3 = models.ImageField(upload_to='images/')
-
-
-class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    bio = models.TextField(null=True)
-    created_at = models.DateTimeField(auto_now_add=True)

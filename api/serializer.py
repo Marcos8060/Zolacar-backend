@@ -28,9 +28,3 @@ class FeatureSerializer(serializers.ModelSerializer):
     class Meta:
         model = Featured
         fields = '__all__'
-
-
-class ProfileSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Profile
-        fields = ['id','user','bio','created_at']

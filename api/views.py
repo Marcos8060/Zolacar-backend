@@ -88,12 +88,3 @@ class CarFleetDetailFilter(generics.ListAPIView):
 #     queryset = Profile.objects.all()
 #     serializer_class = ProfileSerializer
 
-
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def Profile(request):
-    user  = request.user
-    profile = user.note_set.all()  
-    serializer = ProfileSerializer(profile,Many=True)
-    return Response(serializer.data)
-
