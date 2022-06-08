@@ -4,6 +4,7 @@ from .models import *
 # Register your models here.
 admin.site.register(Car)
 admin.site.register(Featured)
-admin.site.register(NewUser)
+admin.site.register(Profile)
+
 
 

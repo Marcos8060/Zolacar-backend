@@ -6,7 +6,7 @@ from .models import *
 class RegisterUserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(max_length=50,min_length=6,write_only=True)
     class Meta:
-        model = NewUser
+        model = User
         fields = ['email','username','password']
     
     def create(self,validated_data):
@@ -28,3 +28,9 @@ class FeatureSerializer(serializers.ModelSerializer):
     class Meta:
         model = Featured
         fields = '__all__'
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ['id','user','bio','created_at']

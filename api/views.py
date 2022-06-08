@@ -10,7 +10,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
-
+from rest_framework.decorators import api_view,permission_classes
+from rest_framework.permissions import IsAuthenticated
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -40,19 +41,6 @@ class CustomUserCreate(APIView):
             if new_user:
                 return Response(status=status.HTTP_201_CREATED)
         return Response(reg_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-
-
-# class BlackListTokenView(APIView):
-#     permission_classes = [AllowAny]
-
-#     def post(self,request):
-#         try:
-#             refresh_token = request.data['refresh_token']
-#             token = RefreshToken(refresh_token)
-#             token.blacklist()
-#         except Exception as e:
-#             return Response(status=status.HTTP_400_BAD_REQUEST)
-
 
 
 class BlacklistTokenUpdateView(APIView):
@@ -94,4 +82,18 @@ class CarFleetDetailFilter(generics.ListAPIView):
     # ['^slug'] starts-with search functionality
     # ['@']  full text search works best with postgresql
     # ['$']  regex search
+
+
+# class Profile(generics.ListCreateAPIView):
+#     queryset = Profile.objects.all()
+#     serializer_class = ProfileSerializer
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def Profile(request):
+    user  = request.user
+    profile = user.note_set.all()  
+    serializer = ProfileSerializer(profile,Many=True)
+    return Response(serializer.data)
 
